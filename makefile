@@ -2,7 +2,6 @@ GITHUB_USER=meg768
 GITHUB_PROJECT=homebridge-http-request
 GITHUB_URL=https://github.com/$(GITHUB_USER)/$(GITHUB_PROJECT)
 
-
 all:
 	@echo Specify something
 

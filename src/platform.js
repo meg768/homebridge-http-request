@@ -19,7 +19,7 @@ module.exports = class Platform {
     accessories(callback) {
 		
 		var Accessories = {
-			'switch': require('./switch.js')
+			'switch': require('./accessories/switch.js')
 		}
 
         var accessories = [];
@@ -30,7 +30,7 @@ module.exports = class Platform {
 			var Accessory = Accessories[config.type];
 
 			if (Accessory != undefined)
-	            accessories.push(new Accessory({...config, platform:this, log:this.log, debug:this.debug, homebridge:this.homebridge}));
+	            accessories.push(new Accessory({config:config, platform:this, log:this.log, debug:this.debug, homebridge:this.homebridge}));
         });
 
 		callback(accessories);
