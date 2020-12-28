@@ -1,5 +1,6 @@
 "use strict";
 
+
 module.exports = class Platform {
 
     constructor(log, config, homebridge) {
@@ -7,7 +8,6 @@ module.exports = class Platform {
         this.config = config;
         this.log = log;
         this.homebridge = homebridge;
-        this.vehicles = [];
         this.debug = config.debug ? log : () => {};
 
         this.homebridge.on('didFinishLaunching', () => {
@@ -17,35 +17,23 @@ module.exports = class Platform {
     }
 
     accessories(callback) {
-        
-        var Vehicle = require('./vehicle.js');
-        var vehicles = [];
+		
+		var Accessories = {
+			'switch': require('./switch.js')
+		}
+
         var accessories = [];
 
         this.debug(`Creating accessories...`);
-        this.config.vehicles.forEach((config, index) => {
-            vehicles.push(new Vehicle(this, config));
+        this.config.accessories.forEach((config, index) => {
+
+			var Accessory = Accessories[config.type];
+
+			if (Accessory != undefined)
+	            accessories.push(new Accessory({...config, platform:this, log:this.log, debug:this.debug, homebridge:this.homebridge}));
         });
 
-        var promise = Promise.resolve();
-
-        vehicles.forEach((vehicle) => {
-            promise = promise.then(() => {
-                return vehicle.getAccessories();                
-            })
-            .then((vehicleAccessories) => {
-                accessories = accessories.concat(vehicleAccessories);
-            })
-        });
-
-        promise.then(() => {
-            this.vehicles = vehicles;
-            callback(accessories);
-        })
-        .catch((error) => {
-            this.log(error);
-            callback([]);
-        })
+		callback(accessories);
     }
 
 
