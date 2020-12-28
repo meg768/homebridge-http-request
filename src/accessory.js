@@ -9,7 +9,13 @@ class Accessory extends Events {
     constructor(options) {
         super();
 
-        var {log, debug, config, platform, name, uuid, category} = options;
+        var {log, debug, config, name, platform, uuid} = options;
+
+		if (config == undefined)
+			throw new Error('A configuration of the accessory must be specified.');
+
+		if (name == undefined)
+			name = config.name;
 
         if (name == undefined)
             throw new Error('A name of the accessory must be specified.');
@@ -17,10 +23,6 @@ class Accessory extends Events {
         if (uuid == undefined)
             uuid = homebridge.hap.uuid.generate(name);
 
-        if (category == undefined)
-            category = homebridge.hap.Accessory.Categories.OTHER;
-
-  
         this.services = [];
 
         var service = new Service.AccessoryInformation();
