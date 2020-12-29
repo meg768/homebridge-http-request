@@ -1,9 +1,6 @@
 var {API, Service, Characteristic} = require('./homebridge.js');
 
 
-
-// Basic accessory - may be used for most projects
-
 class Accessory extends API.platformAccessory  {
 
     constructor(options) {
@@ -27,25 +24,15 @@ class Accessory extends API.platformAccessory  {
 		this.name = name;
         this.displayName = name;
 
-
-
-        var service = this.getService(Service.AccessoryInformation);
-        service.getCharacteristic(Characteristic.FirmwareRevision, "1.0");
-//        this.addService(service); 
-
 		this.platform = platform;
 		this.config = config;
 		this.log = log;
 		this.debug = debug;
 
+		this.updateCharacteristicValue(Service.AccessoryInformation, Characteristic.FirmwareRevision, "1.0");
+
 		console.log(this);
   
-      // Seems like we have to give it a name...
-/*
-        this.name = name;
-        this.displayName = name;
-		this.UUID = uuid;
-*/
   }
 
 	getServices() {
