@@ -1,6 +1,6 @@
 {
   "name": "homebridge-http-request",
-  "version": "1.0.7",
+  "version": "1.0.14",
   "description": "",
   "main": "index.js",
   "scripts": {

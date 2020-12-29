@@ -2,14 +2,15 @@
 
 var Homebridge = require('./src/homebridge.js');
 
-module.exports = function(homebridge) {
+module.exports = function(api) {
 
-    Homebridge.Service = homebridge.hap.Service;
-    Homebridge.Characteristic = homebridge.hap.Characteristic;
-    Homebridge.Accessory = homebridge.hap.Accessory;
-    Homebridge.PlatformAccessory = homebridge.platformAccessory;
-    Homebridge.api = homebridge;
-    Homebridge.uuid = homebridge.hap.uuid;
+    Homebridge.Service = api.hap.Service;
+    Homebridge.Characteristic = api.hap.Characteristic;
+    Homebridge.Accessory = api.hap.Accessory;
+    Homebridge.PlatformAccessory = api.platformAccessory;
+    Homebridge.api = api;
+    Homebridge.API = api;
+    Homebridge.uuid = api.hap.uuid;
 
-    homebridge.registerPlatform('homebridge-http-request', 'HTTP Request', require('./src/platform.js'));
+    api.registerPlatform('homebridge-http-request', 'HTTP Request', require('./src/platform.js'));
 };
