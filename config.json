@@ -10,7 +10,8 @@
 				"name": "My switch 1",
 				"type": "switch",
 				"request": {
-					"url": "pi-matrix-64x64:4000/text",
+					"url": "http://pi-matrix-64x64:4000",
+					"path": "/text",
 					"method": "post",
 					"body": {
 						"fontSize": 0.5,
