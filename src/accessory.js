@@ -28,19 +28,19 @@ class Accessory extends API.platformAccessory  {
         this.displayName = name;
 
 
-/*
-        var service = new Service.AccessoryInformation();
+
+        var service = this.getService(Service.AccessoryInformation);
         service.getCharacteristic(Characteristic.FirmwareRevision, "1.0");
         this.addService(service); 
-*/
+
 		this.platform = platform;
 		this.config = config;
 		this.log = log;
 		this.debug = debug;
+
+		console.log(this);
   
-		this.debug(this.name);
-		this.debug(this.displayName);
-        // Seems like we have to give it a name...
+      // Seems like we have to give it a name...
 /*
         this.name = name;
         this.displayName = name;
