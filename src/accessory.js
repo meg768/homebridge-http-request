@@ -78,5 +78,3 @@ module.exports = class extends API.platformAccessory  {
 
 
 };
-
-module.exports = Accessory;
