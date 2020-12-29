@@ -37,7 +37,6 @@ class Accessory extends API.platformAccessory  {
   
 		this.debug(this.name);
 		this.debug(this.displayName);
-		this.debug(this);
         // Seems like we have to give it a name...
 /*
         this.name = name;
