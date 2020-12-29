@@ -34,11 +34,11 @@ class Accessory extends API.hap.Accessory  {
 		console.log(this);
   
   }
-
+/*
 	getServices() {
 		return this.services;
 	}
-	
+*/	
 	pause(ms) {
         return new Promise((resolve, reject) => {
             setTimeout(resolve, ms);
