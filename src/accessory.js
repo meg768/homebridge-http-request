@@ -23,6 +23,7 @@ module.exports = class extends API.platformAccessory  {
 		super(name, uuid);
 
 		this.name = name;
+		this.uniqueName = `${platform.config.name}-${name}`;
 		this.displayName = name;
 		this.UUID = uuid;
 		this.uuid = uuid;
