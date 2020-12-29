@@ -1,9 +1,6 @@
 var {API, Service, Characteristic} = require('./homebridge.js');
 
 
-console.log('------------')
-console.log(API.platformAccessory);
-console.log('------------')
 
 // Basic accessory - may be used for most projects
 
@@ -24,6 +21,7 @@ class Accessory extends API.platformAccessory  {
         if (uuid == undefined)
             uuid = API.hap.uuid.generate(name);
 
+		console.log('CREATING ACCESSORY', name, uuid);
 		super(name, uuid);
 
 
