@@ -24,6 +24,9 @@ class Accessory extends API.platformAccessory  {
 		console.log('CREATING ACCESSORY', name, uuid);
 		super(name, uuid);
 
+		this.name = name;
+        this.displayName = name;
+
 
 /*
         var service = new Service.AccessoryInformation();
