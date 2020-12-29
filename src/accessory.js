@@ -31,7 +31,7 @@ class Accessory extends API.platformAccessory  {
 
         var service = this.getService(Service.AccessoryInformation);
         service.getCharacteristic(Characteristic.FirmwareRevision, "1.0");
-        this.addService(service); 
+//        this.addService(service); 
 
 		this.platform = platform;
 		this.config = config;
