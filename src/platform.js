@@ -19,7 +19,7 @@ module.exports = class Platform {
     accessories(callback) {
 		
 		var Accessories = {
-			'switch': require('./accessories/switch.js')
+			'switch': require('./accessories/http-switch.js')
 		}
 
         var accessories = [];

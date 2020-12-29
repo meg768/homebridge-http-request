@@ -2,8 +2,6 @@
 var Service  = require('../homebridge.js').Service;
 var Characteristic  = require('../homebridge.js').Characteristic;
 var Accessory = require('../accessory.js');
-var Request = require('yow/request');
-var isObject = require('yow/isObject')
 
 module.exports = class Switch extends Accessory {
 
@@ -51,27 +49,7 @@ module.exports = class Switch extends Accessory {
     }
 
     turnOn() {
-
-		if (isObject(this.config.request)) {
-			var {method = 'get', path = '/', url, query, body} = this.config.request;
-
-			this.log('Connecting to', url)
-			var request = new Request(url);
-			var options = {};
-	
-			if (isObject(body))
-				options.body = body;
-	
-			if (isObject(query))
-				options.query = query;
-	
-			return request.request(method, options);
-	
-		}
-		else {
-			return Promise.resolve();
-
-		}
+		return Promise.resolve();
     }
 
     turnOff() {
