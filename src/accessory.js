@@ -1,5 +1,7 @@
 var {API, Service, Characteristic} = require('./homebridge.js');
 
+
+
 module.exports = class extends API.platformAccessory  {
 
     constructor(options) {
@@ -19,6 +21,8 @@ module.exports = class extends API.platformAccessory  {
 
 		var uniqueName = `${platform.config.name}-${name}`;
 		var uuid = API.hap.uuid.generate(uniqueName);
+
+		console.log('CReating accdesssory', name, uniqueName, uuid);
 
 		super(name, uuid);
 
