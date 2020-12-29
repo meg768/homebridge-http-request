@@ -1,6 +1,5 @@
 
-var Request = require('yow/request');
-var isObject = require('yow/isObject')
+var Switch = require('./switch.js');
 
 module.exports = class extends Switch {
 
@@ -10,6 +9,9 @@ module.exports = class extends Switch {
     }
 
     turnOn() {
+		var Request = require('yow/request');
+		var isObject = require('yow/isObject');
+		
 		if (!isObject(this.config.request))
 			return Promise.resolve();
 
