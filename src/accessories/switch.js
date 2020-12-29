@@ -65,7 +65,7 @@ module.exports = class Switch extends Accessory {
 			if (isObject(query))
 				options.query = query;
 	
-			return request.request(method, path, options);
+			return request.request(method, options);
 	
 		}
 		else {
