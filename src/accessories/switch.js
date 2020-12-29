@@ -51,9 +51,9 @@ module.exports = class Switch extends Accessory {
     }
 
     turnOn() {
-		var {method = 'get', path = '/', url, query, body} = this.config;
 
 		if (isObject(this.config.request)) {
+			var {method = 'get', path = '/', url, query, body} = this.config.request;
 
 			this.log('Connecting to', url)
 			var request = new Request(url);
