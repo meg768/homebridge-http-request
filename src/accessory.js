@@ -35,7 +35,8 @@ module.exports = class extends API.platformAccessory  {
 
 		this.updateCharacteristicValue(Service.AccessoryInformation, Characteristic.FirmwareRevision, "1.0");
 
-  }
+	}
+
 
 	getServices() {
 		return this.services;

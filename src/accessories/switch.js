@@ -10,7 +10,7 @@ module.exports = class Switch extends Accessory {
  
         this.switchState = false;
         
-        this.addService(new Service.Switch(this.name, this.UUID));
+        this.addService(new Service.Switch(this.name, 'switcy'));
         this.enableCharacteristic(Service.Switch, Characteristic.On, this.getSwitchState.bind(this), this.setSwitchState.bind(this));
     }
 
