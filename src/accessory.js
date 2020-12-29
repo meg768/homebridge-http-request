@@ -8,6 +8,9 @@ module.exports = class extends API.platformAccessory  {
 		if (config == undefined)
 			throw new Error('A configuration of the accessory must be specified.');
 
+		if (platform.config.name == undefined)
+			throw new Error('The platform must have a name.');
+
 		if (name == undefined)
 			name = config.name;
 
