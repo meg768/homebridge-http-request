@@ -15,7 +15,7 @@ module.exports = class extends Switch {
 		if (!isObject(this.config.request))
 			return Promise.resolve();
 
-		return new Promise(() => {
+		return new Promise((resolve, reject) => {
 			var {method = 'get', url, query, body} = this.config.request;
 
 			this.debug('Connecting to', url, 'using method', method, '...');
