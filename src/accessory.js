@@ -48,7 +48,11 @@ class Accessory extends API.platformAccessory  {
 */
   }
 
-    pause(ms) {
+	getServices() {
+		return this.services;
+	}
+	
+	pause(ms) {
         return new Promise((resolve, reject) => {
             setTimeout(resolve, ms);
         });
