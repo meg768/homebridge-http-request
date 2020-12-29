@@ -1,6 +1,5 @@
 
-var Service  = require('../homebridge.js').Service;
-var Characteristic  = require('../homebridge.js').Characteristic;
+var {Service, Characteristic} = require('../homebridge.js')
 var Accessory = require('../accessory.js');
 
 module.exports = class Switch extends Accessory {

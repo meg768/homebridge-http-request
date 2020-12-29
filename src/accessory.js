@@ -15,12 +15,13 @@ module.exports = class extends API.platformAccessory  {
             throw new Error('A name of the accessory must be specified.');
 
         if (uuid == undefined)
-            uuid = API.hap.uuid.generate(name);
+            uuid = API.hap.uuid.generate(`${platform.config.name}-${name}`);
 
 		super(name, uuid);
 
 		this.name = name;
-        this.displayName = name;
+		this.displayName = name;
+		
 		this.platform = platform;
 		this.config = config;
 		this.log = log;
