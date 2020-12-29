@@ -1,7 +1,7 @@
 var {API, Service, Characteristic} = require('./homebridge.js');
 
 
-class Accessory extends API.platformAccessory  {
+class Accessory extends API.hap.Accessory  {
 
     constructor(options) {
         var {log, debug, config, name, platform, uuid} = options;
@@ -22,7 +22,7 @@ class Accessory extends API.platformAccessory  {
 		super(name, uuid);
 
 		this.name = name;
-        this.displayName = name;
+//        this.displayName = name;
 
 		this.platform = platform;
 		this.config = config;
