@@ -3,7 +3,7 @@ var {API, Service, Characteristic} = require('./homebridge.js');
 module.exports = class extends API.platformAccessory  {
 
     constructor(options) {
-        var {log, debug, config, name, platform, uuid} = options;
+        var {log, debug, config, name, platform} = options;
 
 		if (config == undefined)
 			throw new Error('A configuration of the accessory must be specified.');
@@ -17,13 +17,13 @@ module.exports = class extends API.platformAccessory  {
         if (name == undefined)
             throw new Error('A name of the accessory must be specified.');
 
-        if (uuid == undefined)
-            uuid = API.hap.uuid.generate(`${platform.config.name}-${name}`);
+		var uniqueName = `${platform.config.name}-${name}`;
+		var uuid = API.hap.uuid.generate(uniqueName);
 
 		super(name, uuid);
 
 		this.name = name;
-		this.uniqueName = `${platform.config.name}-${name}`;
+		this.uniqueName = uniqueName;
 		this.displayName = name;
 		this.UUID = uuid;
 		this.uuid = uuid;
