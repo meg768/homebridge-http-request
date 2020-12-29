@@ -24,7 +24,7 @@ module.exports = class extends API.platformAccessory  {
 
 		console.log('CReating accdesssory', name, uniqueName, uuid);
 
-		super(name, uuid);
+		super(uniqueName, uuid);
 
 		this.name = name;
 		this.uniqueName = uniqueName;
