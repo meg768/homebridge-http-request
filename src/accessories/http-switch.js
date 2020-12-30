@@ -29,9 +29,11 @@ module.exports = class extends Switch {
 				options.query = query;
 	
 			request.request(method, options).then(() => {
+				console.log('request send pausing 1000 ms');
 				return this.pause(1000);
 			})
 			.then(() => {
+				console.log('Turning off again...');
 				return this.updateSwitchState(false);
 			})
 			.then(() => {
