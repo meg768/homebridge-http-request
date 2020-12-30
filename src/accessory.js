@@ -22,14 +22,17 @@ module.exports = class extends API.platformAccessory  {
 		var uniqueName = `${platform.config.name}-${name}`;
 		var uuid = API.hap.uuid.generate(uniqueName);
 
-		console.log('CReating accdesssory', name, uniqueName, uuid);
-
 		super(uniqueName, uuid);
 
 		this.name = name;
-		this.uniqueName = uniqueName;
+
+		// Apparently we need a display name...
 		this.displayName = name;
+
+		// Seems like we have to set the uuid_base member to a unique ID to have several platforms with accessories with the same name
 		this.uuid_base = uuid;
+
+		// What do I know, but this is set also...
 		this.UUID = uuid;
 		this.uuid = uuid;
 		

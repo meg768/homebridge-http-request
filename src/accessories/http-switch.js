@@ -29,6 +29,9 @@ module.exports = class extends Switch {
 				options.query = query;
 	
 			request.request(method, options).then(() => {
+				return this.pause(1000);
+			})
+			.then(() => {
 				return this.updateSwitchState(false);
 			})
 			.then(() => {
