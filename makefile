@@ -17,3 +17,5 @@ git-reset:
 goto-github:
 	open $(GITHUB_URL).git
 
+npm-publish:
+	npm publish

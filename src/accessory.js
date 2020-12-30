@@ -29,6 +29,7 @@ module.exports = class extends API.platformAccessory  {
 		this.name = name;
 		this.uniqueName = uniqueName;
 		this.displayName = name;
+		this.uuid_base = uuid;
 		this.UUID = uuid;
 		this.uuid = uuid;
 		
