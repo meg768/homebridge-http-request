@@ -60,37 +60,29 @@ module.exports = class extends API.platformAccessory  {
         this.getService(service).getCharacteristic(characteristic).updateValue(value);
     }
 
-    enableCharacteristic(service, characteristic, getter, setter) {
+	addCharacteristic(service, characteristic, setter, getter) {
 
-        service = this.getService(service);
-        
-        if (typeof getter === 'function') {
-            service.getCharacteristic(characteristic).on('get', callback => {
-                callback(null, getter());
-            });
-        }
+		var ctx = service.getCharacteristic(characteristic);
 
-        if (typeof setter === 'function') {
-            service.getCharacteristic(characteristic).on('set', (value, callback) => {
-                var response = setter(value);
+		ctx.on('get', (callback) => {
+            callback(null, getter());
+        });
 
-                if (response instanceof Promise) {
-                    response.then(() => {
-                    })
-                    .catch((error) => {
-                        this.log(error);
-                    })
-                    .then(() => {
-                        callback(null);                
-                    });
-                }
-                else
-                    callback(null);
-            });
-    
-        }
+        ctx.on('set', (value, callback) => {
 
-    }
+			setter(value).then(() => {
+			})
+			.catch(() => {
+				this.log(error);
+			})
+			.then(() => {
+				callback();
+
+			})
+		});
+	}
+
+
 
 
 };
