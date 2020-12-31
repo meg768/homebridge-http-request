@@ -18,7 +18,8 @@ module.exports = class extends Accessory {
 			if (!isObject(this.config.request))
 				return Promise.resolve();
 
-			var characteristic = this.getService(Service.Switch).getCharacteristic(Characteristic.On);
+			if (!value)
+				return Promise.resolve();
 
 			return new Promise((resolve, reject) => {
 				var {method = 'get', url, query, body} = this.config.request;
@@ -59,8 +60,26 @@ module.exports = class extends Accessory {
 			return state;
 		};
 
-        this.addService(new Service.Switch(this.name, this.UUID));
-        this.enableCharacteristic(Service.Switch, Characteristic.On, getter, setter);
+
+        characteristic.on('get', (callback) => {
+            callback(null, getter());
+        });
+
+        characteristic.on('set', (value, callback) => {
+
+			setter(value).then(() => {
+				this.log('Value set', value);
+			})
+			.catch(() => {
+				this.log(error);
+			})
+			.then(() => {
+				callback();
+
+			})
+        });
+
+        this.addService(service);
 
     }
 
