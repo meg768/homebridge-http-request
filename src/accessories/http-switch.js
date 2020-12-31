@@ -16,7 +16,7 @@ module.exports = class extends Accessory {
 			if (!isObject(this.config.request))
 				return Promise.resolve();
 
-			var characteristic = this.getService(Service.Switch).getCharacteristic(this.Characteristic.On);
+			var characteristic = this.getService(Service.Switch).getCharacteristic(Characteristic.On);
 
 			return new Promise((resolve, reject) => {
 				var {method = 'get', url, query, body} = this.config.request;
