@@ -8,13 +8,12 @@ module.exports = class extends Accessory {
 		super(options);
 		
 		var state = false;
+		var service = new Service.Switch(this.name, this.UUID);
+		var characteristic = service.getCharacteristic(Characteristic.On);
 
 		var setter = (value) => {
 			var Request = require('yow/request');
 			var isObject = require('yow/isObject');
-
-			var service = this.getService(Service.Switch);
-			var characteristic = service.getCharacteristic(Characteristic.On);
 
 			if (!isObject(this.config.request))
 				return Promise.resolve();
@@ -63,7 +62,6 @@ module.exports = class extends Accessory {
 			return state;
 		};
 
-/*
         characteristic.on('get', (callback) => {
             callback(null, getter());
         });
@@ -80,10 +78,13 @@ module.exports = class extends Accessory {
 				callback();
 
 			})
-        });
-*/
-        this.addService(new Service.Switch(this.name, this.UUID));
-		this.enableCharacteristic(Service.Switch, Characteristic.On, setter.bind(this), getter.bind(this));
+		});
+		
+		this.addService(service);
+
+
+//        this.addService(new Service.Switch(this.name, this.UUID));
+//		this.enableCharacteristic(Service.Switch, Characteristic.On, setter.bind(this), getter.bind(this));
     }
 
 }
