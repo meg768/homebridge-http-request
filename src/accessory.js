@@ -81,11 +81,11 @@ module.exports = class extends API.platformAccessory  {
                         this.log(error);
                     })
                     .then(() => {
-                        callback(null, getter());                
+                        callback(null);                
                     });
                 }
                 else
-                    callback(null, getter());
+                    callback(null);
             });
     
         }

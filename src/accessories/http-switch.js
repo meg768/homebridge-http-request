@@ -12,7 +12,7 @@ module.exports = class extends Accessory {
 		var setter = (value) => {
 			var Request = require('yow/request');
 			var isObject = require('yow/isObject');
-			
+
 			var service = this.getService(Service.Switch);
 			var characteristic = service.getCharacteristic(Characteristic.On);
 
@@ -83,7 +83,7 @@ module.exports = class extends Accessory {
         });
 */
         this.addService(new Service.Switch(this.name, this.UUID));
-		this.enableCharacteristic(Service.Switch, Characteristic.On, setter, getter);
+		this.enableCharacteristic(Service.Switch, Characteristic.On, setter.bind(this), getter.bind(this));
     }
 
 }
