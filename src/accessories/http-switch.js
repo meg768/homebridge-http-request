@@ -8,7 +8,9 @@ module.exports = class extends Accessory {
 		super(options);
 		
 		var state = false;
-		
+		var service = new Service.Switch(this.name, this.UUID);
+		var characteristic = service.getCharacteristic(Characteristic.On);
+
 		var setter = (value) => {
 			var Request = require('yow/request');
 			var isObject = require('yow/isObject');
