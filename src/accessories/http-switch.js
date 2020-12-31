@@ -34,16 +34,18 @@ module.exports = class extends Accessory {
 				if (isObject(query))
 					options.query = query;
 		
+				this.log('Sending');
 				request.request(method, options).then(() => {
-					console.log('request send pausing 1000 ms');
-					return this.pause(1000);
+					this.log('SENT!');
 				})
 				.catch((error) => {
 					this.log(error);
 				})
 				.then(() => {
-					console.log('Turning off again...');
-					characteristic.updateValue(state = false);
+					console.log('Turning off again in 500ms...');
+					setTimeout(() => {
+						characteristic.updateValue(state = false);
+					}, 500);
 				})
 				.then(() => {
 					resolve();
