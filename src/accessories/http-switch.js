@@ -61,7 +61,7 @@ module.exports = class extends Accessory {
 		var getter = () => {
 			return state;
 		};
-
+/*
         characteristic.on('get', (callback) => {
             callback(null, getter());
         });
@@ -79,13 +79,37 @@ module.exports = class extends Accessory {
 
 			})
 		});
-		
+		*/
 		this.addService(service);
-
+		this.addCharacteristic(service, Characteristic.On, setter, getter);
 
 //        this.addService(new Service.Switch(this.name, this.UUID));
 //		this.enableCharacteristic(Service.Switch, Characteristic.On, setter.bind(this), getter.bind(this));
     }
+
+
+	addCharacteristic(service, characteristic, setter, getter) {
+
+		var ctx = service.getCharacteristic(characteristic);
+
+		ctx.on('get', (callback) => {
+            callback(null, getter());
+        });
+
+        ctx.on('set', (value, callback) => {
+
+			setter(value).then(() => {
+				this.log('Value set', value);
+			})
+			.catch(() => {
+				this.log(error);
+			})
+			.then(() => {
+				callback();
+
+			})
+		});
+	}
 
 }
 
