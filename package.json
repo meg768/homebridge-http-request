@@ -1,12 +1,13 @@
 {
   "name": "homebridge-http-request",
-  "version": "1.0.47",
+  "version": "1.0.49",
   "description": "",
   "main": "index.js",
   "scripts": {
 	"test": "echo \"Error: no test specified\" && exit 1",
 	"git-commit": "make git-commit",
-	"git-pull": "make git-pull"
+	"git-pull": "make git-pull",
+	"goto-github": "make goto-github"
   },
   "repository": {
     "type": "git",
