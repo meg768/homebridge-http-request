@@ -1,56 +1,56 @@
 
 
-{
 
-	{
-		"platform": "HTTP Request",
-		"name": "Matrix 64x64",
-		"debug": true,
-		"accessories": [
-			{
-				"name": "Väder",
-				"type": "switch",
-				"request": {
-					"url": "http://pi-matrix-64x64:4000/weather",
-					"method": "post",
-					"body": {
-						"fontSize": 0.5,
-						"textColor": "blue",
-						"scrollDelay": 7,
-						"iterations": 1,
-						"priority": "!"
-					}
-				}
-			},
-			{
-				"name": "Nyheter",
-				"type": "switch",
-				"request": {
-					"url": "http://pi-matrix-64x64:4000/news",
-					"method": "post",
-					"body": {
-						"fontSize": 0.5,
-						"textColor": "blue",
-						"scrollDelay": 7,
-						"iterations": 1,
-						"priority": "!"
-					}
-				}
-			},
-			{
-				"name": "GIF",
-				"type": "switch",
-				"request": {
-					"url": "http://pi-matrix-64x64:4000/gif",
-					"method": "post",
-					"body": {
-						"duration": 60000,
-						"priority": "!"
-					}
+
+{
+	"platform": "HTTP Request",
+	"name": "Matrix 64x64",
+	"debug": true,
+	"accessories": [
+		{
+			"name": "Väder",
+			"type": "switch",
+			"request": {
+				"url": "http://pi-matrix-64x64:4000/weather",
+				"method": "post",
+				"body": {
+					"fontSize": 0.5,
+					"textColor": "blue",
+					"scrollDelay": 7,
+					"iterations": 1,
+					"priority": "!"
 				}
 			}
-		]
-	}
-
-
+		},
+		{
+			"name": "Nyheter",
+			"type": "switch",
+			"request": {
+				"url": "http://pi-matrix-64x64:4000/news",
+				"method": "post",
+				"body": {
+					"fontSize": 0.5,
+					"textColor": "blue",
+					"scrollDelay": 7,
+					"iterations": 1,
+					"priority": "!"
+				}
+			}
+		},
+		{
+			"name": "Animering",
+			"type": "switch",
+			"request": {
+				"url": "http://pi-matrix-64x64:4000/gif",
+				"method": "post",
+				"body": {
+					"duration": 60000,
+					"priority": "!"
+				}
+			}
+		}
+	]
 }
+
+
+
