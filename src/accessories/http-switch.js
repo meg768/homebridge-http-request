@@ -16,16 +16,14 @@ module.exports = class extends Accessory {
 			var isObject = require('yow/isObject');
 			var isString = require('yow/isString');
 			var mode     = value ? 'turnOn' : 'turnOff';
-			var config   = value ? this.config.turnOn : this.config.turnOff;
 			var bounce   = this.config.bounce;
-			
-			if (!isObject(config))
-				return Promise.resolve();
-				
-			var {method = 'get', url, query, body} = config;
 
-			if (!isString(url))
-				return Promise.error(new Error(`An url must be defined in ${mode}.`));
+			state = value;
+
+			var {method = 'get', url, query, body} = value ? this.config.turnOn : this.config.turnOff;
+
+			if (url == undefined)
+				return Promise.resolve();
 
 			return new Promise((resolve, reject) => {
 	
