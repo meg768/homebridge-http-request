@@ -15,8 +15,7 @@ module.exports = class extends Accessory {
 			var Request  = require('yow/request');
 			var isObject = require('yow/isObject');
 			var isString = require('yow/isString');
-			var mode     = value ? 'turnOn' : 'turnOff';
-			var bounce   = this.config.bounce;
+			var bounce   = typeof this.config.bounce == "boolean" ? 1000 : bounce;
 
 			state = value;
 
@@ -43,7 +42,7 @@ module.exports = class extends Accessory {
 					if (bounce) {
 						setTimeout(() => {
 							characteristic.updateValue(state = !state);
-						}, 1000);	
+						}, bounce);	
 					}
 					resolve();
 				})
