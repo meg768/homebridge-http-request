@@ -65,7 +65,16 @@ module.exports = class extends API.platformAccessory  {
 		var ctx = service.getCharacteristic(characteristic);
 
 		ctx.on('get', (callback) => {
-            callback(null, getter());
+			getter().then((value) => {
+				callback(null, value);
+			})
+			.catch(() => {
+				this.log(error);
+			})
+			.then(() => {
+				callback();
+
+			})
         });
 
         ctx.on('set', (value, callback) => {

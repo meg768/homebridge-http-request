@@ -35,14 +35,18 @@ module.exports = class extends Accessory {
 					options.query = query;
 		
 				request.request(method, options).then(() => {
+					return this.pause(2000);
 				})
 				.catch((error) => {
 					this.log(error);
 				})
 				.then(() => {
+					characteristic.updateValue(state = false);
+					/*
 					setTimeout(() => {
 						characteristic.updateValue(state = false);
 					}, 1000);
+					*/
 				})
 				.then(() => {
 					resolve();
@@ -56,15 +60,12 @@ module.exports = class extends Accessory {
 		};
 
 		var getter = () => {
-			return state;
+			return Promise.resolve(state);
 		};
 		
 		this.addService(service);
 		this.addCharacteristic(service, Characteristic.On, setter, getter);
     }
-
-
-
 
 }
 
