@@ -24,7 +24,6 @@ module.exports = class extends Accessory {
 			return new Promise((resolve, reject) => {
 				var {method = 'get', url, query, body} = this.config.request;
 	
-				this.debug(`Connecting to '${url}' using method '${method}'...`);
 				var request = new Request(url);
 				var options = {};
 		
@@ -33,11 +32,12 @@ module.exports = class extends Accessory {
 		
 				if (isObject(query))
 					options.query = query;
-		
+
+				this.debug(`Connecting to '${url}' using method '${method}'...`);
+				this.debug(`Payload ${JSON.stringify(options)}`);
+	
 				request.request(method, options).then(() => {
-					this.debug('Setting timeout to reset');
 					setTimeout(() => {
-						this.debug('Setting state to false again');
 						characteristic.updateValue(state = false);
 					}, 1000);
 					resolve();
