@@ -7,7 +7,7 @@ module.exports = class extends Accessory {
 
 		super(options);
 		
-		var state = false;
+		var state = true;
 		var service = new Service.Switch(this.name, this.UUID);
 		var characteristic = service.getCharacteristic(Characteristic.On);
 
@@ -104,6 +104,7 @@ module.exports = class extends Accessory {
 		
 		this.addService(service);
 		this.addCharacteristic(service, Characteristic.On, setter, getter);
+
     }
 
 }
