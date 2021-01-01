@@ -70,11 +70,8 @@ module.exports = class extends API.platformAccessory  {
 			})
 			.catch(() => {
 				this.log(error);
-			})
-			.then(() => {
 				callback();
-
-			})
+			});
         });
 
         ctx.on('set', (value, callback) => {
@@ -83,11 +80,8 @@ module.exports = class extends API.platformAccessory  {
 			})
 			.catch(() => {
 				this.log(error);
-			})
-			.then(() => {
 				callback();
-
-			})
+			});
 		});
 	}
 
