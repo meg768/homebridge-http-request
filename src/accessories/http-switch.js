@@ -24,7 +24,7 @@ module.exports = class extends Accessory {
 			return new Promise((resolve, reject) => {
 				var {method = 'get', url, query, body} = this.config.request;
 	
-				this.debug('Connecting to', url, 'using method', method, '...');
+				this.debug(`Connecting to '${url}' using method '${method}'...`);
 				var request = new Request(url);
 				var options = {};
 		
