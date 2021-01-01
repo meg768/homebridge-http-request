@@ -35,20 +35,15 @@ module.exports = class extends Accessory {
 					options.query = query;
 		
 				request.request(method, options).then(() => {
-					this.debug('Request finished');
-				})
-				.catch((error) => {
-					this.log(error);
-				})
-				.then(() => {
 					this.debug('Setting timeout to reset');
 					setTimeout(() => {
 						this.debug('Setting state to false again');
 						characteristic.updateValue(state = false);
-					}, 2000);
+					}, 1000);
 					resolve();
 				})
 				.catch((error) => {
+					this.log(error);
 					reject(error);
 				})
 	

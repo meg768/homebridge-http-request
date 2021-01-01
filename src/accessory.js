@@ -80,8 +80,10 @@ module.exports = class extends API.platformAccessory  {
 			})
 			.catch(() => {
 				this.log(error);
+			})
+			.then(() => {
 				callback();
-			});
+			})
 		});
 	}
 
