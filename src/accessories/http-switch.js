@@ -15,7 +15,7 @@ module.exports = class extends Accessory {
 			var Request  = require('yow/request');
 			var isObject = require('yow/isObject');
 			var isString = require('yow/isString');
-			var bounce   = typeof this.config.bounce == "boolean" ? 1000 : this.config.bounce;
+			var bounce   = typeof this.config.bounce == "boolean" ? 1000 : Number(this.config.bounce);
 
 			state = value;
 
@@ -63,43 +63,6 @@ module.exports = class extends Accessory {
 
 		var setter = (value) => {
 			return turnOnOff(value);
-			var Request = require('yow/request');
-			var isObject = require('yow/isObject');
-
-			if (!isObject(this.config.request))
-				return Promise.resolve();
-
-			if (!value)
-				return Promise.resolve();
-
-			return new Promise((resolve, reject) => {
-				var {method = 'get', url, query, body} = this.config.request;
-	
-				var request = new Request(url);
-				var options = {};
-		
-				if (isObject(body))
-					options.body = body;
-		
-				if (isObject(query))
-					options.query = query;
-
-				this.debug(`Connecting to '${url}' using method '${method}'...`);
-				this.debug(`Payload ${JSON.stringify(options)}`);
-	
-				request.request(method, options).then(() => {
-					setTimeout(() => {
-						characteristic.updateValue(state = false);
-					}, 1000);
-					resolve();
-				})
-				.catch((error) => {
-					this.log(error);
-					reject(error);
-				})
-	
-			});
-				
 		};
 
 		var getter = () => {
