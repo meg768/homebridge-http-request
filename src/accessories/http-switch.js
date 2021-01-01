@@ -39,11 +39,12 @@ module.exports = class extends Accessory {
 				this.debug(`Payload ${JSON.stringify(options)}`);
 	
 				request.request(method, options).then(() => {
+					this.debug(`Bounce ${bounce}.`);
 					if (bounce) {
 						this.debug(`Bounce specified in switch config. Delaying ${bounce} ms to revert to original value.`);
 						setTimeout(() => {
 							state = !state;
-							
+
 							this.debug(`Switch state reset to ${state}.`);
 							characteristic.updateValue(state);
 						}, bounce);	
