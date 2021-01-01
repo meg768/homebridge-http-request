@@ -40,8 +40,12 @@ module.exports = class extends Accessory {
 	
 				request.request(method, options).then(() => {
 					if (bounce) {
+						this.debug(`Bounce specified in switch config. Delaying ${bounce} ms to revert to original value.`);
 						setTimeout(() => {
-							characteristic.updateValue(state = !state);
+							state = !state;
+							
+							this.debug(`Switch state reset to ${state}.`);
+							characteristic.updateValue(state);
 						}, bounce);	
 					}
 					resolve();
