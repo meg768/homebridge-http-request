@@ -15,7 +15,7 @@ module.exports = class extends Accessory {
 			var Request  = require('yow/request');
 			var isObject = require('yow/isObject');
 			var isString = require('yow/isString');
-			var bounce   = typeof this.config.bounce == "boolean" ? 1000 : bounce;
+			var bounce   = typeof this.config.bounce == "boolean" ? 1000 : this.config.bounce;
 
 			state = value;
 
