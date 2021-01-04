@@ -68,7 +68,7 @@ module.exports = class extends API.platformAccessory  {
 			getter().then((value) => {
 				callback(null, value);
 			})
-			.catch(() => {
+			.catch((error) => {
 				this.log(error);
 				callback();
 			});
@@ -78,7 +78,7 @@ module.exports = class extends API.platformAccessory  {
 
 			setter(value).then(() => {
 			})
-			.catch(() => {
+			.catch((error) => {
 				this.log(error);
 			})
 			.then(() => {
